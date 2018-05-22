@@ -950,10 +950,14 @@
         <artifactId>hbase-server</artifactId>
         <version>${hbase.version}</version>
 	<exclusions>
-            <exclusion>
-        	<groupId>org.glassfish</groupId>
-		<artifactId>javax.el</artifactId>
-            </exclusion>
+          <exclusion>
+            <groupId>org.glassfish</groupId>
+	    <artifactId>javax.el</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.servlet.jsp</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
