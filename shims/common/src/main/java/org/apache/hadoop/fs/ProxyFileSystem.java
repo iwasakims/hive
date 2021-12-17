@@ -23,6 +23,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Options.Rename;
 import org.apache.hadoop.fs.permission.FsPermission;
 import org.apache.hadoop.util.Progressable;
 import org.apache.hadoop.util.Shell;
@@ -180,6 +181,12 @@ public class ProxyFileSystem extends FilterFileSystem {
     return super.isFile(dest) ? false : super.rename(swizzleParamPath(src), dest);
   }
 
+   @Override
+   protected void rename(Path src, Path dst, Rename... options)
+       throws IOException {
+     super.rename(swizzleParamPath(src), swizzleParamPath(dst), options);
+   }
+
   @Override
   public boolean delete(Path f, boolean recursive) throws IOException {
     return super.delete(swizzleParamPath(f), recursive);
@@ -213,6 +220,11 @@ public class ProxyFileSystem extends FilterFileSystem {
   @Override
   public Path getWorkingDirectory() {
     return swizzleReturnPath(super.getWorkingDirectory());
+  }
+
+  @Override
+  public boolean mkdirs(Path f) throws IOException {
+    return super.mkdirs(swizzleParamPath(f));
   }
 
   @Override
