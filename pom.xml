@@ -1849,6 +1849,8 @@
             <exclude>**/PriorityBlockingDeque.java</exclude>
             <exclude>**/StringToDouble.java</exclude>
             <exclude>LICENSE-binary</exclude>
+            <exclude>debian/**</exclude>
+            <exclude>.pc/**</exclude>
           </excludes>
         </configuration>
       </plugin>
